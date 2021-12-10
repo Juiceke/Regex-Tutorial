@@ -52,7 +52,7 @@ Quantifiers look for a certain amount of something in a string.
   
 ```{2,}``` Just like the previous one, but it'll look for the number and anything greater than that number. ```My dude{2,}``` would end up finding "My dudeeeeeee" if that were in the string.  
 
-```{2,5}``` Again, just like the previous one, but it looks for the amount of E's between 2 and 5.
+```{2,5}``` Again, just like the previous one, but it looks for between 2 and 5 E's.
 
 ```My d(ude)*``` Everything between the () is considered the previous character, so it is now looking for "My d" or "My dude". You could add as many "ude"'s as you wanted to this and it would still find it.
 
@@ -64,10 +64,43 @@ Let's look at the example RegEx again.
 
 The ```{2,6}``` part of this RegEx is looking for somewhere between two and six characters in the area where you would usually put ".com"
 ### OR Operator
+The OR Operator is used to look for more than one thing or another. 
 
+```x(y|z)``` Will look for whatever is in place of x, followed by y or z! In this case, it would find ```xy```, ```xz```, and ```xyz```.
+
+```x[yz]``` Will look for whatever is in place of x, followed by y and z. In this case, it would find ```xyz``` only.
+
+Lets take a look the example RegEx again:  
+```/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/```  
+In the regex, I do not see anything that matches this.
+
+I'm not too confident about this one, so feel free to correct me about OR Operator's if you know better!
 ### Character Classes
+Character classes will look for certain kinds of characters in the text.
 
+```\d``` would match any single character that is a number. Ex: ```1```, ```2```, ```3```.
+
+```\w``` would match any single character that is a letter. Ex: ```a```, ```b```, ```c```.
+
+```\s``` would match any whitespace character in the text. Ex: spaces and tabs in a document.
+
+```.``` would match every character. Ex: Everything!
+
+There are some more things you can do with these. Here are those other things.  
+
+Making the character after the / capitalized makes it do the opposite. /D looks for everything not a number and all that.
+
+Putting something before the / will make the regex look for something more specific. For Example: ```f\d``` would look for f followed by a number.
+
+Let's see if anything in the example regex matches this.  
+
+```/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$```
+
+```[\da-z\.-]``` uses the \d character class, and ```([\/\w \.-]*)``` uses the \w character class.
+
+There's more things you can do with it, but this is everything you need currently.
 ### Flags
+Flags will be something you put at the end of your Regex to change how it is read. The example Regex doesn't use this, so I will not be going into detail on it in this tutorial.
 
 ### Grouping and Capturing
 
