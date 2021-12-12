@@ -125,7 +125,7 @@ Bracket expressions can be used to do some previous things quickly!
 
 ```[0-9]%``` looks for a number with a percent sign in front of it!
 
-```[^x-zX-Z] looks for a string that doesn't have whatever is in front of it within the brackets!
+```[^x-zX-Z]``` looks for a string that doesn't have whatever is in front of it within the brackets!
 
 Let's see if anything in the example regex matches this.  
 
