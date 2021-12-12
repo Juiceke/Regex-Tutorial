@@ -103,17 +103,69 @@ There's more things you can do with it, but this is everything you need currentl
 Flags will be something you put at the end of your Regex to change how it is read. The example Regex doesn't use this, so I will not be going into detail on it in this tutorial.
 
 ### Grouping and Capturing
+Capture groups are groups of characters we make using ```()```. 
 
+```x(yz)``` makes a capturing group for the value bc after an a, so the RegEx looks for ```xyz```
+
+```x(?:yz)*``` uses a ```?:``` to cancel the capturing group, which will cause it to still look for ```xyz```, but will also look for just ```x```.
+
+```x(?<dude>yz)``` uses ```<>``` to name the capture group, so now the ```yz``` group is named dude.
+
+Let's see if anything in the example regex matches this.  
+
+```/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$```
+
+```(https?:\/\/)``` cancels the capture group so it will accept that start, but doesn't need it to be a URL.
 ### Bracket Expressions
+Bracket expressions can be used to do some previous things quickly!
 
+```[xyz]``` is the same as using an or operator to say ```x|y|z```.
+
+```[x-z]``` is the same as the previous example because it is looking for x,z, and everything between the two! It will not find capitalized letters unless you also put those in!
+
+```[0-9]%``` looks for a number with a percent sign in front of it!
+
+```[^x-zX-Z] looks for a string that doesn't have whatever is in front of it within the brackets!
+
+Let's see if anything in the example regex matches this.  
+
+```/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$```
+
+```([\da-z\.-]+)\.([a-z\.]{2,6})``` 
+
+We can see two examples of a bracket expression in this RegEx! there are two ```[a-z]``` bracket expressions within the regex that look for lowercase a through z in both of those areas! 
 ### Greedy and Lazy Match
+Greedy operators will expand a match as far as it can, so if I wanted to look for a div in something, it would match everything within the div. Some greedy operators would be ```* + {}```. 
+
+Lazy operators will look for said item, and only said item, so if I were to look for a div, it would only find the ```<div>``` parts of the text. A lazy operator would be ```?```
+
+Greedy Operator that finds everything between two <> signs: ```<.+>```
+
+Lazy Operator that finds only the <> signs: ```<.*?>```
 
 ### Boundaries
+Boundaries will only look for things within boundaries that you set.
 
+```\bdude\b``` will only look for the word dude with nothing around it.
+
+```\Bdude\B``` will only look for dude if some letter characters are around it!
 ### Back-references
 
 ### Look-ahead and Look-behind
+Look-ahead and Look-behind will look for something as long as a character you decided is behind or in front of it.
+
+```x(?=y)``` will find an x as long as a y is in front of it, but it will not match the y with it.
+
+```(?<=y)x``` will find an x as long as a y is behind it, but it will not match the y with it.
+
+There is also an opposite way to do this.
+
+```x(?!y)``` will find an x that has anything but a y in front of it.
+  
+```(?<!y)x``` will find an x that has anything but a y behind it.
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+I am Juiceke and I am currently studying code, so please let me know if there was anything I can change in this. It will improve the tutorial along with my understanding of RegEx! :)
+
+My profile: https://github.com/Juiceke
